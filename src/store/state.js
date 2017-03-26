@@ -1,5 +1,5 @@
-export default {
-  user:{ 
-    auth: false,
-  }
-};
+let state = {
+  auth: false
+}
+
+export default state

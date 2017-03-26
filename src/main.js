@@ -8,11 +8,16 @@ import 'element-ui/lib/theme-default/index.css'
 import App from './App'
 import router from './router'
 import store from './store'
+import routerConfig from './router/config'
 
 Vue.use(ElementUI)
+routerConfig(router, store)
 
-Vue.prototype.$http = Axios
+const debug = process.env.NODE_ENV !== 'production'
+
+Vue.config.devtools = debug
 Vue.config.productionTip = false
+Vue.prototype.$http = Axios
 
 /* eslint-disable no-new */
 new Vue({
