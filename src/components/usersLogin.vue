@@ -17,14 +17,18 @@
     },
     methods:{
       login() {
-        this.$store.commit(SIGN_IN)
-        if(this.targetUrl){
-          this.$router.replace(this.targetUrl)
-        }else{
-          this.$router.replace({
-            name: 'Index'
-          });
-        }
+        this.$http.get('http://localhost:3000/api/signin').then((res)=>{
+          if (res.data.code===200) {
+            this.$store.commit(SIGN_IN)
+            if(this.targetUrl){
+              this.$router.replace(this.targetUrl)
+            }else{
+              this.$router.replace({
+                name: 'Index'
+              })
+            }
+          }
+        })
       }
     },
     beforeRouteEnter (to, from, next) {
